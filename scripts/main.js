@@ -10,6 +10,14 @@ const ajouter= document.querySelector('.add-button');
 const container=document.querySelector('.container');
 const afficher = document.querySelector('.afficher');
 const totalCourse=document.querySelector('.totalCourse');
+
+//Sous cathegories
+const sousCatAlim=document.querySelector('.catAl-detl');
+const sousCatTrans=document.querySelector('.cat-trans');
+const sousCatDiv=document.querySelector('.cat-div');
+const sousCatLog=document.querySelector('.cat-log');
+
+
 let total=0,totalAli=0,totalLog=0,totalTrans=0,totaldiv=0,totalgen=0;
 let messege='';
 const alerte = document.querySelector('.alert');
@@ -79,15 +87,20 @@ const displayCourse=()=>{
         switch (element[2]) {
             case 'logement':
                 totalLog+=parseInt(element[1]);
+                afficherbyCategory('logement',sousCatLog);
                 break;
+
             case 'alimentation':
                 totalAli+=parseInt(element[1]);
+                afficherbyCategory('alimentation',sousCatAlim);
                 break;
             case 'transport':
                 totalTrans+=parseInt(element[1]);
+                afficherbyCategory('transport',sousCatTrans);
                 break;
             case 'divertissement':
                 totaldiv+=parseInt(element[1]);
+                afficherbyCategory('divertissement',sousCatDiv);
                 break;
             default:
                 break;
@@ -125,8 +138,24 @@ const removeCourse=(index)=>{
 }
 
 const affiherTotaux=(totalAli,totalLog,totalTrans,totaldiv)=>{
-    document.querySelector('.total-al').innerHTML=`${totalAli}`;
-    document.querySelector('.total-trans').innerHTML=`${totalTrans}`;
-    document.querySelector('.total-div').innerHTML=`${totaldiv}`;
-    document.querySelector('.total-log').innerHTML=`${totalLog}`;
+    document.querySelector('.total-al').innerHTML=`${totalAli} €`;
+    document.querySelector('.total-trans').innerHTML=`${totalTrans} €`;
+    document.querySelector('.total-div').innerHTML=`${totaldiv} €`;
+    document.querySelector('.total-log').innerHTML=`${totalLog} €`;
 }
+
+
+
+const afficherbyCategory=(categorie,sousCat)=>{
+    sousCat.innerHTML='';
+    const ul=document.createElement('ul');
+    let newList=myCourseList.filter((element)=>element[2]===categorie);
+
+    newList.forEach((element)=>{
+        const li=document.createElement('li');
+        li.innerHTML=`${element[0]}`;
+        ul.appendChild(li);
+    });
+    
+    sousCat.appendChild(ul);
+}   

@@ -25,7 +25,7 @@
 
                 <div class="iflex-col">
                     <label for="category">Catégorie :</label>
-                    <select name="" class="category  field">
+                    <select name="" class="category field">
                     <option value="" disabled selected>Choisissez la catégorie</option>
                     <option value="alimentation">Alimentation</option>
                     <option value="logement">Logement</option>
@@ -34,21 +34,43 @@
                     </select>
                 </div>
 
+                <input type="date" class="date field" required placeholder="Date de la dépense">
+
                 <button type="submit" class="add-button field">Ajouter</button>
         </form>
         <div class="alert"></div>
         <div class="afficherCat iflex-row">
-            <div class="catAl alimentation">Alimentation :
-                 <span class="total-al">0</span> €
+            <div class="catAl alimentation">
+
+                <div class="cat-detail">
+                    Alimentation :
+                     <span class="total-al">0 €</span>
                 </div>
-            <div class="catLog logement">Logement : 
-                <span class="total-log">0</span> €
+                <div class="catAl-detl"></div>
+
             </div>
-            <div class="caTrans transport">Transport : 
-                <span class="total-trans">0</span> €
+            <div class="catLog logement">
+                
+                
+                <div class="cat-detail">
+                    Logement : 
+                    <span class="total-log">0 €</span>
+                </div>
+                <div class="cat-log"></div>
+
             </div>
-            <div class="catDiv divertissement">Diverstissement : 
-                <span class="total-div">0</span> €
+            <div class="caTrans transport">
+                <div class="cat-detail">
+                    Transport :
+                    <span class="total-trans">0 €</span>
+                </div>
+                <div class="cat-trans"></div>
+            </div>
+            <div class="catDiv divertissement"> 
+                <div class="cat-detail">
+                    Diverstissement :<span class="total-div">0 €</span> 
+                </div>
+                <div class="cat-div"></div>
             </div>
         </div>
         <div class="afficher iflex-col">Pas de dépense</div>
