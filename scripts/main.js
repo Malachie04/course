@@ -10,8 +10,9 @@ const ajouter= document.querySelector('.add-button');
 const container=document.querySelector('.container');
 const afficher = document.querySelector('.afficher');
 const totalCourse=document.querySelector('.totalCourse');
-let total=0;
-
+let total=0,totalAli=0,totalLog=0,totalTrans=0,totaldiv=0,totalgen=0;
+let messege='';
+const alerte = document.querySelector('.alert');
 
 ajouter.addEventListener('click',(event)=>{
     event.preventDefault();
@@ -23,6 +24,15 @@ ajouter.addEventListener('click',(event)=>{
     //     alert('Veuillez remplir tous les champs');
     //     return;
     // }
+    
+    if(amountValue<=0){
+        messege='Le montant de la dépense doit être supérieur à 0';
+        alerte.innerHTML=messege;
+        setTimeout(() => {
+            alerte.innerHTML='';
+        }, 2000);
+        return; 
+    }
 
     // if(myCourseList.some(item => item[0].toUpperCase() === descriptionValue.toUpperCase())){
     //     alert('Cette course existe déjà');
@@ -51,6 +61,11 @@ const addCourse=(descrition,montant,categorie)=>{
 const displayCourse=()=>{
     if(afficher.hasChildNodes()){
         afficher.innerHTML='';
+        totalAli=0;
+        totalLog=0;
+        totalTrans=0;
+        totaldiv=0;
+        totalgen=0;
     }
     const ul=document.createElement('ul');
     total=0;
@@ -61,19 +76,57 @@ const displayCourse=()=>{
 
         li.innerHTML=`<span>${element[0]}</span><span>-</span><span>${element[1]}</span><span>-</span><span> ${element[2]}</span><button href="#" class="delete">🗑️</button>`;
 
+        switch (element[2]) {
+            case 'logement':
+                totalLog+=parseInt(element[1]);
+                break;
+            case 'alimentation':
+                totalAli+=parseInt(element[1]);
+                break;
+            case 'transport':
+                totalTrans+=parseInt(element[1]);
+                break;
+            case 'divertissement':
+                totaldiv+=parseInt(element[1]);
+                break;
+            default:
+                break;
+        }
+
+        li.classList.add(`${element[2]}`);
+
         li.querySelector('.delete').addEventListener('click', (event) => {
-            const index = myCourseList.indexOf(element);
+            event.preventDefault();
+            const index = event.target.parentElement.getAttribute('value');
             removeCourse(index); 
+            
         });
 
         total+= parseInt(element[1]);
         ul.appendChild(li);
     });
+
     afficher.appendChild(ul);
-    totalCourse.innerHTML=`Total : ${total} €`;
+
+    totalgen=totalAli+totalLog+totalTrans+totaldiv;
+    totalCourse.innerHTML=`Total Général: ${totalgen} €`;
+    // totalCourse.innerHTML=`Total Général: ${total} €`;
+
+    affiherTotaux(totalAli,totalLog,totalTrans,totaldiv);
+
+
+    
 }
+
+
 const removeCourse=(index)=>{
     myCourseList.splice(index, 1);
     displayCourse();
-    displayCourse();
+}
+
+const affiherTotaux=(totalAli,totalLog,totalTrans,totaldiv)=>{
+    document.querySelector('.total-al').innerHTML=`${totalAli}`;
+    document.querySelector('.total-trans').innerHTML=`${totalTrans}`;
+    document.querySelector('.total-div').innerHTML=`${totaldiv}`;
+    document.querySelector('.total-log').innerHTML=`${totalLog}`;
 }

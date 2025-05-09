@@ -1,42 +1,44 @@
 body{
-    background: url(../../image/1301187-grocery-store-wallpaper.jpg) center fixed no-repeat;
-    background-size: cover;
+    
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 15px;
 }
 .container{
     margin: auto;
-    width: 500px;
-    background-color: #e36b07;
+    width: 80%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 1rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 0 30px;
-    padding: 30px 0;
+
+    padding: 30px;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
     z-index: -10;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    
 }
 
-.btn,input{ 
-    height: 40px;
-    border: none;
-    background-color:#fd7d6470;
+input{ 
     border: 1px solid #000;
 }
 
-.btn{
-    border-left: none;
-}
-
 input:focus{
+    border-color: #ff0000;
     outline: none;
 }
+
+.add-button{
+    border: none;
+    background-color: maroon;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
 .dOne{
     display: none;
 }
@@ -52,9 +54,11 @@ input:focus{
 
 form{
     display: flex;  
-    border: 1px solid #000;
+    flex-direction: column;
+    // border: 1px solid #000;
     padding: 20px;
     border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 img{
@@ -71,17 +75,6 @@ img{
     border-radius: 10px;
 }
 
-ol{
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-li{
-    color: aliceblue;
-    font-size: 20px;
-    border-bottom: 1px solid #fcfbfb;
-}
 
 .supprimer{
     border: none;
@@ -93,4 +86,72 @@ li{
 
 .fa-trash{
     margin-left: auto;
+}
+
+.alimentation{
+    color: #ff0000;
+}
+.logement{
+    color: #00ff00;
+}
+.transport{
+    color: #0000ff;
+}
+.divertissement{
+    color: green;
+}
+
+.iflex-col{
+    display: flex;
+    flex-direction: column;
+}
+.iflex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+ul{
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    
+}
+.delete{
+    margin-left: auto;
+    border: none;
+}
+
+.afficher{
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 30px;
+}
+
+.afficherCat{
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 30px;
+    gap:1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    & > div{
+        flex-basis: calc(100% / 4 - 1rem);
+        border-radius: 10px;
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        padding: 10px;
+    }
+}
+
+.field{
+    height: 50px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.expense-form{
+    gap: 2rem;
 }

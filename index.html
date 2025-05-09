@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/styles.min.cs">
+    <link rel="stylesheet" href="styles/styles.min.css">
     <title>Index</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="./scripts/main.js" defer></script>
@@ -11,21 +11,21 @@
 <body>
         
     <div class="container">
-        <h1>💰 Gestion des dépenses 💰</h1>
-        <form class="expense-form">
-                <div class="form-content">
+        <h1>Gestion des dépenses</h1>
+        <form class="expense-form iflex-col">
+                <div class="iflex-col">
                     <label for="description">Description:</label>
-                    <input type="text" class="description" required placeholder="Description de la dépense" autofocus>
+                    <input type="text" class="description field" required placeholder="Description de la dépense" autofocus>
                 </div>
 
-                <div class="form-content">
+                <div class="iflex-col">
                     <label for="amount">Montant:</label>
-                    <input type="number" class="amount" required placeholder="Montant de la dépense" min="0" step="0.01">
+                    <input type="number" class="amount field" required placeholder="Montant de la dépense" min="0" step="0.01">
                 </div>
 
-                <div class="form-content">
+                <div class="iflex-col">
                     <label for="category">Catégorie :</label>
-                    <select name="" class="category">
+                    <select name="" class="category  field">
                     <option value="" disabled selected>Choisissez la catégorie</option>
                     <option value="alimentation">Alimentation</option>
                     <option value="logement">Logement</option>
@@ -34,11 +34,24 @@
                     </select>
                 </div>
 
-                <button type="submit" class="add-button">Ajouter</button>
-
-
+                <button type="submit" class="add-button field">Ajouter</button>
         </form>
-        <div class="afficher">Pas de dépense</div>
+        <div class="alert"></div>
+        <div class="afficherCat iflex-row">
+            <div class="catAl alimentation">Alimentation :
+                 <span class="total-al">0</span> €
+                </div>
+            <div class="catLog logement">Logement : 
+                <span class="total-log">0</span> €
+            </div>
+            <div class="caTrans transport">Transport : 
+                <span class="total-trans">0</span> €
+            </div>
+            <div class="catDiv divertissement">Diverstissement : 
+                <span class="total-div">0</span> €
+            </div>
+        </div>
+        <div class="afficher iflex-col">Pas de dépense</div>
         <div class="totalCourse"></div>
     </div>
 </body>
